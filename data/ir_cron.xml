@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <record id="ir_cron_crear_consulta" model="ir.cron">
+        <field name="name">Sync to wordpress</field>
+        <field name="model_id" ref="model_wordpress_sync_abstract"/>
+        <field name="state">code</field>
+        <field name="code">model.sync_wordpress_posts()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="True"/>
+        <field name="active" eval="True"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="wordpress_connection.list">
+      <field name="name">Post</field>
+      <field name="model">wordpress.post</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="post_id"/>
+          <field name="content"/>
+          <field name="date_published"/>
+        </tree>
+      </field>
+    </record>
+
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="wordpress_connection.action_window">
+      <field name="name">Wordpress connection</field>
+      <field name="res_model">wordpress.post</field>
+      <field name="view_mode">tree</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+
+    <record model="ir.actions.server" id="wordpress_connection.action_server">
+      <field name="name">wordpress_connection server</field>
+      <field name="model_id" ref="model_wordpress_post"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+
+    <!-- Top menu item -->
+
+    <menuitem name="wordpress_connection" 
+    id="wordpress_connection.menu_root"
+    action="wordpress_connection.action_window"
+    web_icon="wordpress_connection,static/description/logo.png"
+
+    />
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="wordpress_connection.menu_1" parent="wordpress_connection.menu_root"/>
+    <menuitem name="Menu 2" id="wordpress_connection.menu_2" parent="wordpress_connection.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="wordpress_connection.menu_1_list" parent="wordpress_connection.menu_1"
+              action="wordpress_connection.action_window"/>
+    <menuitem name="Server to list" id="wordpress_connection" parent="wordpress_connection.menu_2"
+              action="wordpress_connection.action_server"/>
+-->
+  </data>
+</odoo>

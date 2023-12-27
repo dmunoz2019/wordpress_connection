@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+      
+            <!-- Define the cron job -->
+            <record id="ir_cron_wordpress_sync" model="ir.cron">
+                <field name="name">WordPress Post Synchronization</field>
+                <field name="model_id" ref="model_wordpress_sync_abstract"/>
+                <field name="state">code</field>
+                <field name="code">model.sync_wordpress_posts()</field>
+                <field name="active">True</field>
+                <field name="user_id" ref="base.user_root"/>
+                <field name="interval_number">1</field>
+                <field name="interval_type">days</field>
+                <field name="numbercall">-1</field>
+                <field name="doall" eval="False"/>
+            </record>
+
+    
+    </data>
+</odoo>
